@@ -1,20 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
-int main() {
 
-int array[6]={11,12,13,14,15,16};
-int a = 0, b = 6-1;
-int x = 15;
-std::cout<<"hey";
-while (a <= b) {
-    int k = (a+b)/2;
-    if (array[k] == x) {
-    // x found at index k
-    cout<<x;
+int binarysearch(vector<int> array, int x){
+
+    int first = 0;
+    int last = array.size();
+    int target = -1;
+    while (first <= last) {
+        int k = (first+last)/2;
+
+        if (array[k] == x) {
+        // x found at index k
+        return k;
     }
-    if (array[k] > x) b = k-1;
-        else a = k+1;
+    if (array[k] > x) last = k-1;
+        else first = k+1;
     }
+    return -1;
+}
+int main() {
+    vector<int> vecvec = {1,2,3,4,5,6,7,8,9};
+    int target = 5;
+    int a = binarysearch(vecvec, target);
 }
 
 
