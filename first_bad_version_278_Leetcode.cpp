@@ -24,3 +24,22 @@ public:
         
     }
 };
+// not working for unknown and highly sought after reason : ( storing bad + d is causing overflow )
+class Solution {
+public:
+    int firstBadVersion(int n) {
+        
+       int bad = -1;
+        
+        // if (n == 1) return 1;
+        
+        for(int b = n/2 +1; b >= 1; b /= 2){
+            while(!isBadVersion(bad + b)){
+                bad += b;
+            }
+        }
+        int k = bad+1;
+        return k;
+        
+    }
+};
